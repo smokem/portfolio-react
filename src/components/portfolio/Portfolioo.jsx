@@ -137,13 +137,10 @@ const Single = ({ item }) => {
     // offset: ["end end", "start start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [-300, 100]);
-
   return (
     <section>
       <div className="container">
-      <div className={`wrapper ${item.className ? item.className : ""}`}>
-        <div className={`wrapper ${item.id === 2 ? "specialHeight" : ""}`}>
+        <div className={`wrapper ${item.className ? item.className : ""}`}>
           <div className="mediaContainer" ref={ref}>
             {item.type === "image" ? (
               <img src={item.img} alt={item.title} />
@@ -154,7 +151,8 @@ const Single = ({ item }) => {
               </video>
             )}
           </div>
-          <motion.div className="textContainer" style={{ y }}>
+          {/* The textContainer should stay fixed */}
+          <motion.div className="textContainer">
             <h2>{item.title}</h2>
             <p>{item.desc}</p>
             <div className="techLogos">
@@ -166,10 +164,10 @@ const Single = ({ item }) => {
           </motion.div>
         </div>
       </div>
-      </div>
     </section>
   );
 };
+
 
 const Portfolioo = () => {
   const ref = useRef();
